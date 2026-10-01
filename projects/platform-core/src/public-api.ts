@@ -11,4 +11,5 @@ export * from './lib/guards/auth.guard';
 export * from './lib/guards/permission.guard';
 export * from './lib/guards/super-admin.guard';
 export * from './lib/directives/has-permission.directive';
+export * from './lib/interceptors/auth.interceptor';
 export * from './lib/session-lifecycle';
