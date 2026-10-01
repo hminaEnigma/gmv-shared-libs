@@ -1,7 +1,8 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
-/dist
+# NOTE: /dist is intentionally tracked — this repo is consumed by other apps as a
+# git+tag dependency (no npm registry), so the built ng-packagr output must be committed.
 /tmp
 /out-tsc
 /bazel-out
