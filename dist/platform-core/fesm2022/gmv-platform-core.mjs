@@ -176,15 +176,23 @@ class PermissionService {
     _permissions = signal(this.loadFromStorage());
     permissions = this._permissions.asReadonly();
     count = computed(() => this._permissions().length);
+    /**
+     * A super-user bypasses permission checks only outside a tenant. Inside a selected tenant it is
+     * evaluated against its stored permissions like any user, so it only sees that tenant's modules
+     * (the host loads them from `GET /permissions/available` after selecting the tenant).
+     */
+    bypassesChecks() {
+        return this.session.isSuperUser() && !this.session.selectedTenantId();
+    }
     /** Check if the user has a specific permission ("Resource.Action") */
     hasPermission(permission) {
-        if (this.session.isSuperUser())
+        if (this.bypassesChecks())
             return true;
         return this._permissions().includes(permission);
     }
     /** Check if the user has at least one of the given permissions */
     hasAnyPermission(permissions) {
-        if (this.session.isSuperUser())
+        if (this.bypassesChecks())
             return true;
         const perms = this._permissions();
         return permissions.some(p => perms.includes(p));
