@@ -1,0 +1,82 @@
+/* @gmv/ui-kit — tokens estáticos de la UI GMV. Las variables dinámicas de marca las escribe
+   GmvBrandService en <style id="gmv-brand-vars">. Este archivo elige la variante clara/oscura. */
+:root {
+  --gmv-brand: #0866FF;
+  --gmv-on-brand: #FFFFFF;
+  --gmv-brand-text-light: #0866FF;
+  --gmv-brand-text-dark: #5B9BFF;
+  --gmv-brand-soft-light: #E7F0FF;
+  --gmv-brand-soft-dark: #12274A;
+  --gmv-sidebar-bg-light: #0866FF;
+  --gmv-sidebar-fg-light: #FFFFFF;
+  --gmv-sidebar-fg-muted-light: rgba(255, 255, 255, .72);
+  --gmv-sidebar-active-bg-light: rgba(255, 255, 255, .16);
+  --gmv-secondary: #006A32;
+  --gmv-error: #D92D20;
+  --gmv-font: 'Plus Jakarta Sans';
+
+  --gmv-brand-text: var(--gmv-brand-text-light);
+  --gmv-brand-soft: var(--gmv-brand-soft-light);
+  --gmv-sidebar-bg: var(--gmv-sidebar-bg-light);
+  --gmv-sidebar-fg: var(--gmv-sidebar-fg-light);
+  --gmv-sidebar-fg-muted: var(--gmv-sidebar-fg-muted-light);
+  --gmv-sidebar-active-bg: var(--gmv-sidebar-active-bg-light);
+  --gmv-bg: #F5F6F8;
+  --gmv-surface: #FFFFFF;
+  --gmv-surface-raised: #FFFFFF;
+  --gmv-border: #EAECF0;
+  --gmv-text: #101828;
+  --gmv-text-muted: #475467;
+  --gmv-card-border: rgba(16, 24, 40, .05);
+  --gmv-card-shadow: 0 1px 2px rgba(16, 24, 40, .03), 0 6px 16px -4px rgba(16, 24, 40, .06);
+  --gmv-radius-sm: 8px;
+  --gmv-radius-md: 10px;
+  --gmv-radius-lg: 14px;
+  --gmv-focus-ring: 0 0 0 4px color-mix(in srgb, var(--gmv-brand) 18%, transparent);
+  --gmv-sidebar-width: 252px;
+  --gmv-sidebar-width-collapsed: 76px;
+  --gmv-topbar-height: 60px;
+}
+
+:root.app-dark {
+  --gmv-brand-text: var(--gmv-brand-text-dark);
+  --gmv-brand-soft: var(--gmv-brand-soft-dark);
+  --gmv-sidebar-bg: #161B25;
+  --gmv-sidebar-fg: #FFFFFF;
+  --gmv-sidebar-fg-muted: rgba(255, 255, 255, .72);
+  --gmv-sidebar-active-bg: rgba(255, 255, 255, .16);
+  --gmv-bg: #0B0E14;
+  --gmv-surface: #12161F;
+  --gmv-surface-raised: #181D28;
+  --gmv-border: rgba(255, 255, 255, .08);
+  --gmv-text: #ECEEF2;
+  --gmv-text-muted: #A3ACBD;
+  --gmv-card-border: rgba(255, 255, 255, .08);
+  --gmv-card-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+html { scroll-padding-top: var(--gmv-topbar-height); }
+
+body {
+  font-family: var(--gmv-font), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:focus-visible { outline: 2px solid var(--gmv-brand); outline-offset: 2px; }
+.layout-sidebar :focus-visible { outline-color: var(--gmv-sidebar-fg); }
+
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* PrimeNG: tarjetas y tablas suaves */
+.p-card { border: 1px solid var(--gmv-card-border); }
+.p-datatable .p-datatable-thead > tr > th {
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--gmv-text-muted);
+}
+.p-datatable .p-datatable-tbody > tr > td { height: 44px; }
+.p-tag { border-radius: 99px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
