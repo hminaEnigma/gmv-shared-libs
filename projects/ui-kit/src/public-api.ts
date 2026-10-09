@@ -13,3 +13,4 @@ export { buildBrandCss, buildFaviconDataUri, BRAND_STYLE_ID } from './lib/brand/
 export { GmvBrandService } from './lib/brand/gmv-brand.service';
 export { GmvThemePreset } from './lib/brand/gmv-theme.preset';
 export { provideGmvTheme } from './lib/brand/provide-gmv-theme';
+export { GmvBrandLogoComponent } from './lib/brand/brand-logo.component';
