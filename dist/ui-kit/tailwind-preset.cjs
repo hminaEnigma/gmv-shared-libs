@@ -12,7 +12,7 @@ module.exports = {
       },
       borderRadius: { 'gmv-sm': 'var(--gmv-radius-sm)', 'gmv-md': 'var(--gmv-radius-md)', 'gmv-lg': 'var(--gmv-radius-lg)' },
       boxShadow: { 'gmv-card': 'var(--gmv-card-shadow)' },
-      fontFamily: { sans: ['var(--gmv-font)', 'system-ui', 'sans-serif'] },
+      fontFamily: { sans: ['var(--gmv-font)', 'Plus Jakarta Sans Variable', 'system-ui', 'sans-serif'] },
     },
   },
 };

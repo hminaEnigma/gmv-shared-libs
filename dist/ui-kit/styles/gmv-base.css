@@ -58,7 +58,7 @@
 html { scroll-padding-top: var(--gmv-topbar-height); }
 
 body {
-  font-family: var(--gmv-font), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: var(--gmv-font), 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
