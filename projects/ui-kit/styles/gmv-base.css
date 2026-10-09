@@ -63,7 +63,7 @@ body {
   line-height: 1.5;
 }
 
-:focus-visible { outline: 2px solid var(--gmv-brand); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--gmv-brand-text); outline-offset: 2px; }
 .layout-sidebar :focus-visible { outline-color: var(--gmv-sidebar-fg); }
 
 .tabular-nums { font-variant-numeric: tabular-nums; }

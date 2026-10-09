@@ -21,7 +21,7 @@ describe('resolveBrand', () => {
   it('marca amarilla: texto oscuro en sidebar y brand-text oscurecido', () => {
     const r = resolveBrand({ tenantName: 'Sol Amarillo', primaryColor: '#FACC15' });
     expect(r.sidebarFg).toBe('#101828');
-    expect(r.sidebarFgMuted).toBe('rgba(16,24,40,.68)');
+    expect(contrast(r.sidebarFgMuted, r.sidebarBg)).toBeGreaterThanOrEqual(4.5);
     expect(r.sidebarActiveBg).toBe('rgba(16,24,40,.10)');
     expect(r.onBrand).toBe('#101828');
     expect(contrast(r.brandTextLight, '#FFFFFF')).toBeGreaterThanOrEqual(4.5);
@@ -69,4 +69,26 @@ describe('isBrandConfig', () => {
       expect(isBrandConfig(v)).withContext(JSON.stringify(v)).toBeFalse();
     }
   });
+});
+
+describe('resolveBrand — contraste de pares renderizados', () => {
+  const BRANDS = ['#0866FF', '#FACC15', '#06B6D4', '#C2410C', '#16A34A', '#7C3AED', '#000000', '#FFFFFF'];
+  for (const color of BRANDS) {
+    it(`${color}: texto atenuado del sidebar ≥4.5 sobre el sidebar`, () => {
+      const r = resolveBrand({ tenantName: 'T', primaryColor: color });
+      expect(contrast(r.sidebarFgMuted, r.sidebarBg)).toBeGreaterThanOrEqual(4.5);
+    });
+    it(`${color}: brand-text ≥4.5 sobre brand-soft, blanco y fondo de página (claro)`, () => {
+      const r = resolveBrand({ tenantName: 'T', primaryColor: color });
+      for (const bg of [r.brandSoftLight, '#FFFFFF', '#F5F6F8']) {
+        expect(contrast(r.brandTextLight, bg)).withContext(bg).toBeGreaterThanOrEqual(4.5);
+      }
+    });
+    it(`${color}: brand-text ≥4.5 sobre brand-soft y superficie (oscuro)`, () => {
+      const r = resolveBrand({ tenantName: 'T', primaryColor: color });
+      for (const bg of [r.brandSoftDark, DARK_SURFACE, '#0B0E14']) {
+        expect(contrast(r.brandTextDark, bg)).withContext(bg).toBeGreaterThanOrEqual(4.5);
+      }
+    });
+  }
 });
