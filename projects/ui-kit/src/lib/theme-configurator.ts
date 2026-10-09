@@ -1,6 +1,7 @@
 import { definePreset } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
 
+/** @deprecated Usar `provideGmvTheme()` (incluye `GmvThemePreset` y la marca en runtime). Se mantiene por compatibilidad con remotos en v1.0.x. */
 const AppThemeConfigurator = definePreset(Aura, {
     semantic: {
         primary: {
